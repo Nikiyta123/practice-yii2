@@ -1,0 +1,68 @@
+/*GridView*/
+.GridView-pager-summary{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.GridView-pager{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+/*Category Index*/
+
+.list-category .box-buttons{
+    margin-bottom: 5px;
+}
+.list-category .box-title-custom{
+    letter-spacing: 1px;
+    cursor: move;
+}
+.list-category .box-title-custom span{
+    font-size: 18px;
+}
+ .list-category ul{
+     list-style: none;
+     margin: 0;
+ }
+.list-category .lc-title{
+    padding: 7px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.list-category .lc-title div{
+    display: flex;
+    align-items: center;
+}
+.list-category .lc-crud-icons a:not(:last-child){
+    margin-right: 5px;
+}
+.list-category .lc-crud-icons a{
+    color: rgba(0,0,0,.4);
+}
+.list-category .lc-crud-icons a:hover{
+    color: rgba(0,0,0,.8);
+}
+.list-category .main-ul{
+    padding: 0;
+}
+.list-category .icons-category{
+
+    cursor: move;
+    margin-right: 8px;
+}
+
+/*Field*/
+.icon-before-input{
+    display: flex;
+}
+.icon-before-input div{
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    border: 1px solid #ccc;
+    border-right: 0;
+}

@@ -1,0 +1,70 @@
+body{
+    font-family: 'Nunito', sans-serif;
+}
+
+/*—“»À» ‘Œ–Ã*/
+.common-forms-btn{
+    width: 100%;
+}
+.div-common-forms:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.common-forms-mc{
+    padding: 20px 30px;
+}
+.common-forms-mc label{
+    width: 100%;
+}
+.common-forms-mc .form-check-label{
+    padding: 0;
+}
+
+/*—“»À» —œ»— Œ¬*/
+.common-block{
+    width: 100%;
+    padding: 10px 0;
+}
+.common-block:not(:last-child){
+    margin-bottom: 80px;
+}
+.common-block .title-main{
+    display: flex;
+    align-items: center;
+    color: #343a40;
+    margin-bottom: 30px;
+}
+.common-block .title-main i{
+    margin-right: 15px;
+}
+.common-block .title-main p{
+    margin: 0;
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.common-block .block-list-common{
+    margin-bottom: 20px;
+}
+.common-block .list-group-item{
+    border: 0px solid black;
+    padding: 3px 0;
+    margin: 0;
+}
+.common-block .list-group-item a{
+    text-decoration: none;
+}
+.common-block .main-li{
+    font-weight: 600;
+    font-size: 17px;
+}
+.common-block .lgi-child::before{
+    display: none;
+    position: absolute;
+    font-family: "Font Awesome 5 Pro";
+    content: "\f054";
+    left: -25px;
+}
+.common-block .lgi-child:hover::before{
+    display: block;
+}
