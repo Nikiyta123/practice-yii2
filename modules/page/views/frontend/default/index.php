@@ -1,6 +1,6 @@
 <?php if (!isset($forms)): ?>
     <?= $this->render('@app/views/common/forms', [
-        //'forms' => $forms,
+        // 'forms' => $forms,
     ]) ?>
 <?php endif; ?>
 
