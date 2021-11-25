@@ -57,8 +57,11 @@ CommonAssets::register($this);
 
 </header>
 
-
-<?= $content ?>
+<section class="main">
+    <div class="container">
+        <?= $content ?>
+    </div>
+</section>
 
 
 <footer class="footer mt-auto py-3 text-muted">

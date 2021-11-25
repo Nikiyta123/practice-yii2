@@ -24,8 +24,8 @@ $config = [
         ],
         'user' => [
             'identityClass' => \app\modules\user\models\User::class,
-            'enableAutoLogin' => true, //Авторизация по кукам
-            'loginUrl' => ['/'],//Страница авторизация
+            'enableAutoLogin' => true, //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+            'loginUrl' => ['/'],//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -85,7 +85,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['192.168.0.102', '::1'],
     ];
 }
 

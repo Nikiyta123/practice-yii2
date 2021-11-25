@@ -36,8 +36,6 @@ return [
         'viewPath' => '@app/modules/catalog/category/views/frontend',
     ],
 
-
-
     'user' => [
         'class' => 'app\modules\user\Module',
         'controllerNamespace' => 'app\modules\user\controllers\frontend',
