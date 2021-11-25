@@ -21,7 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="box">
         <div class="box-header with-border">
             <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('Быстрое добавление', ['create'], ['class' => 'btn btn-default']) ?>
         </div>
         <div class="box-body" id="update-box">
             <div class="row">
@@ -37,8 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-
-                            'id',
                             'name',
                             'price',
                             'category_id',
