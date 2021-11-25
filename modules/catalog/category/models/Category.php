@@ -3,6 +3,7 @@
 namespace app\modules\catalog\category\models;
 
 use yii\db\ActiveRecord;
+use app\modules\catalog\product\models\Product;
 
 class Category extends ActiveRecord
 {
@@ -46,8 +47,12 @@ class Category extends ActiveRecord
         ];
     }
 
-    public function getCategory(){
+    public function getParent(){ //getCategory
         return $this->hasOne(Category::className(),['id' => 'parent_id']);
+    }
+
+    public function getProduct(){
+        return $this->hasMany(Product::className(), ['category_id' => 'id']);
     }
 
     public function FullTree(){ //Полное Дерево Категорий
@@ -64,6 +69,16 @@ class Category extends ActiveRecord
         return $tree;
     }
 
+    public function BuildFullTree($tree,&$res = false,$sign=false){
+        foreach ($tree as $item){
+                $res[$item['id']] = $sign.$item['name'];
+                if (isset($item['childs'])) {
+                    $this->BuildFullTree($item['childs'],$res,$sign . '―');
+                }
+        }
+        return $res;
+    }
+
     public function FatTree($tree,$id){//Определенная Ветка Категорий
         foreach ($tree as $item){
             if ($item['id'] == $id){return $item;}
@@ -73,18 +88,14 @@ class Category extends ActiveRecord
         return false;
     }
 
-    function BuildFolder($tree,$exception = false,&$res = false,$sign = false){//Определенная Ветка Категорий
-        foreach ($tree as $item){
-            if ($item['folder'] == 1 && $item['id'] != $exception){
-                $res[$item['id']] = $sign.$item['name'];
-                if (isset($item['childs'])){$this->BuildFolder($item['childs'],$exception,$res,$sign.'―');;}
-            }
+    function ExeptionBulding($field,$value){
+        $category = Category::find()->select(['id'])->asArray()->andWhere([$field => $value])->orderBy(['pos' => SORT_ASC])->all();
+        $exeption = array();
+        foreach ($category as $item) {
+            $exeption[$item['id']] = array('disabled'=>'disabled');
         }
-        return $res;
+        return $exeption;
     }
 
-    function DeleteCategory($tree){
-
-    }
 
 }

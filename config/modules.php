@@ -10,10 +10,16 @@ return [
                 'controllerNamespace' => 'app\modules\user\controllers\backend',
                 'viewPath' => '@app/modules/user/views/backend',
             ],
+
             'category' => [
                 'class' => 'app\modules\catalog\category\Module',
                 'controllerNamespace' => 'app\modules\catalog\category\controllers\backend',
                 'viewPath' => '@app/modules/catalog/category/views/backend',
+            ],
+            'product' => [
+                'class' => 'app\modules\catalog\product\Module',
+                'controllerNamespace' => 'app\modules\catalog\product\controllers\backend',
+                'viewPath' => '@app/modules/catalog/product/views/backend',
             ],
         ]
     ],

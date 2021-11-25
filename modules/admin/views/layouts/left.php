@@ -35,7 +35,7 @@
                         'icon' => 'th',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Товары', 'icon' => 'circle-o', 'url' => ['/admin/category/default/index/']],
+                            ['label' => 'Товары', 'icon' => 'circle-o', 'url' => ['/admin/product/default/index/']],
                             ['label' => 'Категории', 'icon' => 'circle-o', 'url' => ['/admin/category/default/index/']],
                             ['label' => 'Бренды', 'icon' => 'circle-o', 'url' => ['/admin/category/default/index/']],
                         ],

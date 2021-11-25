@@ -6,6 +6,9 @@ use app\modules\category\models\Category;
 use yii\helpers\ArrayHelper;
 use dosamigos\tinymce\TinyMce;
 
+
+
+
 /* @var $this yii\web\View */
 /* @var $model app\modules\category\models\Category */
 /* @var $form yii\widgets\ActiveForm */
@@ -14,7 +17,10 @@ use dosamigos\tinymce\TinyMce;
 
 <?php $form = ActiveForm::begin(); ?>
 
-<?= $form->field($model, 'parent_id', ['options' => ['class' => 'form-group col-md-12']])->dropDownList((array)[0=>'Основная категория']+$model->BuildFolder($model->FullTree(),$model->id)) ?>
+<?= $form->field($model, 'parent_id',['options' => ['class' => 'form-group col-md-12']])->dropDownList(
+    (array)[0=>'Основная категория']+$model->BuildFullTree($model->FullTree()),
+    ['options' => $model->ExeptionBulding('folder',0)]
+) ?>
 
 <?= $form->field($model, 'name',['options' => ['class' => 'form-group col-md-9']])->textInput(['maxlength' => true]) ?>
 
