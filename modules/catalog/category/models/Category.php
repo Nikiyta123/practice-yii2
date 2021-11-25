@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\category\models;
+namespace app\modules\catalog\category\models;
 
 use yii\db\ActiveRecord;
 

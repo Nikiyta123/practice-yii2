@@ -11,9 +11,9 @@ return [
                 'viewPath' => '@app/modules/user/views/backend',
             ],
             'category' => [
-                'class' => 'app\modules\category\Module',
-                'controllerNamespace' => 'app\modules\category\controllers\backend',
-                'viewPath' => '@app/modules/category/views/backend',
+                'class' => 'app\modules\catalog\category\Module',
+                'controllerNamespace' => 'app\modules\catalog\category\controllers\backend',
+                'viewPath' => '@app/modules/catalog/category/views/backend',
             ],
         ]
     ],
@@ -23,9 +23,9 @@ return [
         'viewPath' => '@app/modules/page/views/frontend',
     ],
     'category' => [
-        'class' => 'app\modules\category\Module',
-        'controllerNamespace' => 'app\modules\category\controllers\frontend',
-        'viewPath' => '@app/modules/category/views/frontend',
+        'class' => 'app\modules\catalog\category\Module',
+        'controllerNamespace' => 'app\modules\catalog\category\controllers\frontend',
+        'viewPath' => '@app/modules/catalog/category/views/frontend',
     ],
     'user' => [
         'class' => 'app\modules\user\Module',

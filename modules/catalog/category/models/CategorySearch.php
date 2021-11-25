@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\category\models;
+namespace app\modules\catalog\category\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\category\models\Category;
+use app\modules\catalog\category\models\Category;
 
 /**
  * CategorySearch represents the model behind the search form of `app\modules\category\models\Category`.

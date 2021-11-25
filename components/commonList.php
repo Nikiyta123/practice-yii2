@@ -2,7 +2,7 @@
 namespace app\components;
 
 use yii\base\Widget;
-use app\modules\category\models\Category;
+use app\modules\catalog\category\models\Category;
 
 class commonList extends Widget
 {

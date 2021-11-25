@@ -1,9 +1,9 @@
 <?php
 
-namespace app\modules\category\controllers\backend;
+namespace app\modules\catalog\category\controllers\backend;
 
-use app\modules\category\models\Category;
-use app\modules\category\models\CategorySearch;
+use app\modules\catalog\category\models\Category;
+use app\modules\catalog\category\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

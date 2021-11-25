@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\category;
+namespace app\modules\catalog\category;
 
 /**
  * catalog module definition class

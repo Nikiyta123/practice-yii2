@@ -82,7 +82,7 @@ $this->registerJs($js);
     </div>
     <div class="row box-sortable">
 
-        <?= commonList::widget(['filename' => 'category@admin-category']); ?>
+        <?= commonList::widget(['filename' => 'catalog/category@admin-category']); ?>
 
     </div>
 

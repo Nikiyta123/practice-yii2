@@ -37,25 +37,24 @@ CommonAssets::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        /*'items' => [
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Гость', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],*/
-    ]);
+
+    if (!Yii::$app->user->isGuest) {
+        echo '
+            <div class="div-common-forms">
+                <a href="/admin" class="btn btn-danger common-forms-btn">Админка</a>
+            </div>
+            <div class="div-common-forms">
+                <a href="/logout" class="btn btn-primary common-forms-btn">Выйти</a>
+            </div>
+            ';
+    }else {
+        echo app\modules\user\widgets\BlockForms::widget(['filename' => 'SignInForm']);
+        echo app\modules\user\widgets\BlockForms::widget(['filename' => 'SignUpForm']);
+    }
+
     NavBar::end();
     ?>
+
 </header>
 
 

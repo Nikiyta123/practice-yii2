@@ -2,7 +2,7 @@
 namespace app\modules\category\widgets;
 
 use yii\base\Widget;
-use app\modules\category\models\Category;
+use app\modules\catalog\category\models\Category;
 
 class BlockCategory extends Widget
 {
@@ -47,7 +47,7 @@ class BlockCategory extends Widget
 
     protected function catToTemplate($category, $tab){
         ob_start();
-        include __DIR__. '/../widgets/views/'.$this->file;
+        include __DIR__ . '/../widgets/views/' .$this->file;
         return ob_get_clean();
     }
 

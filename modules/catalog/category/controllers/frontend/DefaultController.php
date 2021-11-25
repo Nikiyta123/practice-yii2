@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\category\controllers\frontend;
+namespace app\modules\catalog\category\controllers\frontend;
 
 use Yii;
 use yii\web\Controller;

@@ -14,7 +14,7 @@ use yii\helpers\Url;
                 <p>Категории</p>
             </div>
 
-            <?= commonList::widget(['filename' => 'category@block-category']); ?>
+            <?= commonList::widget(['filename' => 'catalog/category@block-category']); ?>
 
         </div>
 
