@@ -70,7 +70,7 @@ $this->registerJs($js);
 ?>
 <div class="content-header">
     <h1>
-        <?= Html::encode($this->title) ?>  <?= $this->blocks['content-header'] ?>
+        <?= Html::encode($this->title) ?>
         <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
     </h1>
     <?= Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],]) ?>

@@ -73,7 +73,7 @@ class Category extends ActiveRecord
         return false;
     }
 
-    function BuildFolder($tree,&$exception = false,&$res = false,$sign = false){//Определенная Ветка Категорий
+    function BuildFolder($tree,$exception = false,&$res = false,$sign = false){//Определенная Ветка Категорий
         foreach ($tree as $item){
             if ($item['folder'] == 1 && $item['id'] != $exception){
                 $res[$item['id']] = $sign.$item['name'];
