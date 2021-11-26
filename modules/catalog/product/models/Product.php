@@ -15,6 +15,9 @@ use app\modules\catalog\category\models\Category;
  */
 class Product extends \yii\db\ActiveRecord
 {
+
+    public $images;
+
     /**
      * {@inheritdoc}
      */
@@ -32,6 +35,7 @@ class Product extends \yii\db\ActiveRecord
             [['name', 'price', 'category_id'], 'required'],
             [['price', 'category_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
+            [['images'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg','maxFiles' => 10],
         ];
     }
 
@@ -45,6 +49,7 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Наименование',
             'price' => 'Цена',
             'category_id' => 'Категория',
+            'images' => 'Изображения',
         ];
     }
 

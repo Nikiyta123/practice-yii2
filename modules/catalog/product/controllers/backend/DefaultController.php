@@ -7,6 +7,7 @@ use app\modules\catalog\product\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * DefaultController implements the CRUD actions for Product model.
@@ -67,7 +68,8 @@ class DefaultController extends Controller
     public function actionCreate()
     {
         $model = new Product();
-
+        //$model->images = UploadedFile::getInstances($model, 'images');
+        //debug($model->images);die();
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);

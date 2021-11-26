@@ -16,7 +16,7 @@ $category = new Category;
 
 <div class="product-form col-md-12">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -27,8 +27,10 @@ $category = new Category;
             ['options' => $category->ExeptionBulding('folder',1)]
     ) ?>
 
+    <?= $form->field($model, 'images[]')->fileInput(['multiple' => true]) ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
