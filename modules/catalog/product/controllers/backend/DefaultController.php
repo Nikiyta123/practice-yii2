@@ -69,7 +69,7 @@ class DefaultController extends Controller
     {
         $model = new Product();
         $model->images = UploadedFile::getInstances($model, 'images');
-        debug($model->images);die();
+        //debug($model->images);die();
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);

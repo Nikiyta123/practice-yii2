@@ -6,9 +6,6 @@ use app\modules\category\models\Category;
 use yii\helpers\ArrayHelper;
 use dosamigos\tinymce\TinyMce;
 
-
-
-
 /* @var $this yii\web\View */
 /* @var $model app\modules\category\models\Category */
 /* @var $form yii\widgets\ActiveForm */

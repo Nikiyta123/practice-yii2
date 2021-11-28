@@ -6,6 +6,7 @@ use app\modules\user\models\User;
 use yii\widgets\Pjax;
 use yii\widgets\Breadcrumbs;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\user\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -44,6 +45,7 @@ $this->registerJs("
 ");
 
 ?>
+
 <div class="content-header">
     <h1>
         <?= Html::encode($this->title) ?>
