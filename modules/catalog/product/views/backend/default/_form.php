@@ -22,10 +22,7 @@ $category = new Category;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(
-            $category->BuildFullTree($category->FullTree()),
-            ['options' => $category->ExeptionBulding('folder',1)]
-    ) ?>
+    <?= $form->field($model, 'category_id')->dropDownList($category->BuildFullTree($category->FullTree()), ['options' => $category->ExeptionBulding('folder',1)]) ?>
 
     <?= $form->field($model, 'images[]')->fileInput(['multiple' => true]) ?>
 

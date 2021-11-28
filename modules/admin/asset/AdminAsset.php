@@ -24,7 +24,8 @@ class AdminAsset extends AssetBundle
 
     ];
     public $js = [
-        'https://code.jquery.com/ui/1.13.0/jquery-ui.js',
+        'https://code.jquery.com/ui/1.13.0/jquery-ui.js',//sortable
+        'js/admin/ng-flow/ng-flow-standalone.min.js',
     ];
     public $depends = [
 
