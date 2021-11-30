@@ -7,7 +7,8 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii;
+use yii\bootstrap4\ActiveForm;
 /**
  * DefaultController implements the CRUD actions for Images model.
  */
@@ -28,6 +29,7 @@ class DefaultController extends Controller
             ]
         );
     }
+
 
     public function actionIndex()
     {
@@ -60,6 +62,7 @@ class DefaultController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['index', 'id' => $model->id]);
             }
+
         } else {
             $model->loadDefaultValues();
         }

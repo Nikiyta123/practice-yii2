@@ -1,27 +1,31 @@
 <?php
 use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
+
 
 $js = <<< JS
+    
    $('#btn-wg-images').click(function(){
-        $('#wg-images').modal('show');
         if ($('#content-wg-images').html().trim() === ''){//Проверка на пустой элемент
             $.ajax({
                 url: '/admin/images/default/index',
                 success: function (res) {
                     $("#content-wg-images").append(res);
-                    console.log(res);
                 },
                 error: function () {alert('Ошибка')}
             });
         }
     });
 
+    $('#wg-images-form').on('beforeSubmit', function (e) {
+        console.log(1);
+    });
+    
 JS;
 
 $this->registerJs($js);
 
 ?>
-
 
 <style>
 
@@ -41,26 +45,25 @@ $this->registerJs($js);
     }
 </style>
 
-<a href="#" class="btn btn-primary uploads-image" id="btn-wg-images">
-    <i class="fas fa-upload"></i> Загрузить картинки
-</a>
 
-<div class="modal fade wg-images" id="wg-images" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
+<?php
 
-                <?php Pjax::begin([
-                    'id' => 'pjaxContentWgImages',
-                    'enablePushState' => false,
-                    'timeout' => 5000
-                ]); ?>
-                    <div class="content-wg-images" id="content-wg-images">
+Modal::begin([
+    'toggleButton' => ['label' => '<i class="fas fa-upload"></i> Загрузить картинки','class' => 'btn btn-primary uploads-image','id'=>'btn-wg-images'],
+    'options' => ['class' => 'wg-images']
+]);?>
+
+    <?php Pjax::begin([
+        'id' => 'pjaxContentWgImages',
+        'enablePushState' => false,
+        'timeout' => 5000
+    ]); ?>
+
+        <div class="content-wg-images" id="content-wg-images">
 
 
-                    </div>
-                <?php Pjax::end(); ?>
-            </div>
         </div>
-    </div>
-</div>
+
+    <?php Pjax::end(); ?>
+
+<?php Modal::end(); ?>

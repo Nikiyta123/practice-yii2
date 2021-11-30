@@ -31,9 +31,10 @@ class Images extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['path', 'filename', 'format', 'size'], 'required'],
+            [['path','filename', 'format', 'size'], 'required'],
             [['size'], 'integer'],
             [['path', 'filename', 'format'], 'string', 'max' => 255],
+            [['images'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg','maxFiles' => 10],
         ];
     }
 
