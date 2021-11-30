@@ -24,11 +24,9 @@ $category = new Category;
 
     <?= $form->field($model, 'category_id',['options' => ['class' => 'form-group col-md-12']])->dropDownList($category->BuildFullTree($category->FullTree()), ['options' => $category->ExeptionBulding('folder',1)]) ?>
 
-    <div class="col-md-2">
+    <div class="form-group col-md-12">
         <?= \app\modules\images\widgets\BlockImages::widget(['model' => $model,'attribute' => 'images']); ?>
     </div>
-
-    <?= $form->field($model, 'images[]',['options' => ['class' => 'form-group col-md-12']])->fileInput(['multiple' => true]) ?>
 
     <div class="form-group col-md-12">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

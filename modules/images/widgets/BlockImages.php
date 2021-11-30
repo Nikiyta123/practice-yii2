@@ -23,7 +23,8 @@ class BlockImages extends Widget
 
     public function run()
     {
-        return $this->render('block-images',[
+        return $this->render('index',[
+            'model' => $this->model,
             'images' => Images::find()->select(['path'])->asArray()->all(),
             'attribute' => $this->attribute,
             'options' => $this->options,

@@ -21,6 +21,12 @@ return [
                 'controllerNamespace' => 'app\modules\catalog\product\controllers\backend',
                 'viewPath' => '@app/modules/catalog/product/views/backend',
             ],
+
+            'images' => [
+                'class' => 'app\modules\images\Module',
+                'controllerNamespace' => 'app\modules\images\controllers\backend',
+                'viewPath' => '@app/modules/images/views/backend',
+            ],
         ]
     ],
     'page' => [
