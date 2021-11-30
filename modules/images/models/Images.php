@@ -15,6 +15,8 @@ use Yii;
  */
 class Images extends \yii\db\ActiveRecord
 {
+
+    public $images;
     /**
      * {@inheritdoc}
      */
@@ -46,6 +48,7 @@ class Images extends \yii\db\ActiveRecord
             'filename' => 'Filename',
             'format' => 'Format',
             'size' => 'Size',
+            'images' => 'Картинки'
         ];
     }
 }

@@ -6,7 +6,7 @@ $js = <<< JS
         $('#wg-images').modal('show');
         if ($('#content-wg-images').html().trim() === ''){//Проверка на пустой элемент
             $.ajax({
-                url: '/admin/images/default/images',
+                url: '/admin/images/default/index',
                 success: function (res) {
                     $("#content-wg-images").append(res);
                     console.log(res);
@@ -25,7 +25,7 @@ $this->registerJs($js);
 
 <style>
 
-    .wg-images .modal-body > div:not(:last-child){
+    .wg-images .modal-body .content-wg-images > div:not(:last-child){
         margin-bottom: 1em;
     }
     .wg-images .mb-center{
@@ -48,9 +48,18 @@ $this->registerJs($js);
 <div class="modal fade wg-images" id="wg-images" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-body" id="content-wg-images">
+            <div class="modal-body">
+
+                <?php Pjax::begin([
+                    'id' => 'pjaxContentWgImages',
+                    'enablePushState' => false,
+                    'timeout' => 5000
+                ]); ?>
+                    <div class="content-wg-images" id="content-wg-images">
 
 
+                    </div>
+                <?php Pjax::end(); ?>
             </div>
         </div>
     </div>

@@ -31,6 +31,7 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
+
         $dataProvider = new ActiveDataProvider([
             'query' => Images::find(),
             /*
@@ -45,24 +46,25 @@ class DefaultController extends Controller
             */
         ]);
 
-        return $this->render('index', [
+        return $this->renderAjax('index', [
             'dataProvider' => $dataProvider,
         ]);
     }
 
     public function actionCreate()
     {
+
         $model = new Images();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
