@@ -16,6 +16,7 @@ use Yii;
 class Images extends \yii\db\ActiveRecord
 {
 
+    const path = 'uploads/';
     public $images;
     /**
      * {@inheritdoc}
@@ -31,9 +32,8 @@ class Images extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['path','filename', 'format', 'size'], 'required'],
             [['size'], 'integer'],
-            [['path', 'filename', 'format'], 'string', 'max' => 255],
+            [['path', 'filename'], 'string', 'max' => 255],
             [['images'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg','maxFiles' => 10],
         ];
     }
@@ -47,9 +47,38 @@ class Images extends \yii\db\ActiveRecord
             'id' => 'ID',
             'path' => 'Path',
             'filename' => 'Filename',
-            'format' => 'Format',
             'size' => 'Size',
             'images' => 'Картинки'
         ];
+    }
+
+    public function ImageUpload($size,$filename)
+    {
+        $model = new Images();
+        $model->path='/'.self::path.$filename;
+        $model->filename=$filename;
+        $model->size=$size;
+        if ($model->save()){
+            return true;
+        }
+        return false;
+    }
+
+    public function ImageSave($tmp_name,$filename){
+
+        if (!file_exists(self::path.$filename) && move_uploaded_file($tmp_name, self::path.$filename)){
+            return true;
+        }
+        return false;
+
+    }
+
+    public function uniqFilename()
+    {
+        $filename = uniqid();
+        if (Images::find()->andWhere(['filename' => $filename])->all()){
+            $filename = $this->uniqFilename();
+        }
+        return $filename;
     }
 }

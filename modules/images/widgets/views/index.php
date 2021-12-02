@@ -6,20 +6,14 @@ use yii\bootstrap\Modal;
 $js = <<< JS
     
    $('#btn-wg-images').click(function(){
-        if ($('#content-wg-images').html().trim() === ''){//Проверка на пустой элемент
-            $.ajax({
-                url: '/admin/images/default/index',
-                success: function (res) {
-                    $("#content-wg-images").append(res);
-                },
-                error: function () {alert('Ошибка')}
-            });
-        }
+        $.pjax({          
+            url        : '/admin/images/default/index',
+            container  : '#pjaxContentWgImages',
+            push       : false,
+            timeout    : 5000,      
+        });
     });
 
-    $('#wg-images-form').on('beforeSubmit', function (e) {
-        console.log(1);
-    });
     
 JS;
 
@@ -29,19 +23,19 @@ $this->registerJs($js);
 
 <style>
 
-    .wg-images .modal-body .content-wg-images > div:not(:last-child){
-        margin-bottom: 1em;
-    }
     .wg-images .mb-center{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 0.3em;
+        grid-gap: 0.5em;
         max-height: 400px;
         overflow: auto;
     }
-    .test{
-        height: 100px;
-        border: 1px solid black;
+    .wg-images .mb-center img{
+        max-height: 100px;
+        width: 100%;
+    }
+    .wg-images .common-div-wg-images:not(:last-child){
+        margin-bottom: 10px;
     }
 </style>
 
@@ -59,10 +53,6 @@ Modal::begin([
         'timeout' => 5000
     ]); ?>
 
-        <div class="content-wg-images" id="content-wg-images">
-
-
-        </div>
 
     <?php Pjax::end(); ?>
 

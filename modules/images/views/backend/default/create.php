@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\images\models\Images */
@@ -8,16 +9,16 @@ use yii\helpers\Html;
 
 ?>
 
-<div class="content-wg-images" id="content-wg-images">
-    <div class="mb-up">
-        <a href="#" class="btn btn-primary"><i class="fas fa-images"></i> Картинки</i></a>
+
+    <div class="mb-up common-div-wg-images">
+        <?= Html::tag('a', '<i class="fas fa-images"></i> Картинки</i>',['class' => 'btn btn-primary', 'href' => Url::to(['index'])]); ?>
     </div>
 
-    <div class="mb-create">
+    <div class="mb-create common-div-wg-images">
         <?= $this->render('_form', [
             'model' => $model,
         ]) ?>
     </div>
 
-</div>
+
 

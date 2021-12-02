@@ -16,7 +16,7 @@ $category = new Category;
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name',['options' => ['class' => 'form-group col-md-12']])->textInput(['maxlength' => true]) ?>
 

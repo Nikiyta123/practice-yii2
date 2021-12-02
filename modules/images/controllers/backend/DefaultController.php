@@ -7,8 +7,11 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 use yii;
 use yii\bootstrap4\ActiveForm;
+use yii\web\UploadedFile;
+
 /**
  * DefaultController implements the CRUD actions for Images model.
  */
@@ -30,48 +33,69 @@ class DefaultController extends Controller
         );
     }
 
+    public function actionValidationForm(){
+
+        if (Yii::$app->request->isAjax) {
+            $model = new Images();
+            if($model->load(Yii::$app->request->post())) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
+        }
+    }
 
     public function actionIndex()
     {
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => Images::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
-        ]);
-
+        $images = Images::find()->asArray()->orderBy(['id' => SORT_DESC])->all();
         return $this->renderAjax('index', [
-            'dataProvider' => $dataProvider,
+            'model' => new Images(),
+            'images' => $images,
         ]);
     }
+
 
     public function actionCreate()
     {
-
-        $model = new Images();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index', 'id' => $model->id]);
-            }
-
-        } else {
-            $model->loadDefaultValues();
-        }
-
         return $this->renderAjax('create', [
-            'model' => $model,
+            'model' => new Images(),
         ]);
     }
 
+    public function actionSave()
+    {
+        $model = new Images();
+        //Ajax
+        if ($this->request->isPost) {
+            //debug($_FILES['Images']);die();
+            for ($i=0;$i<count($_FILES['Images']['name']['images']);$i++){
+                $filename = $model->uniqFilename().'.'.explode('/',$_FILES['Images']['type']['images'][$i])[1];
+                if ($model->ImageSave($_FILES['Images']['tmp_name']['images'][$i],$filename)){
+                    if ($model->ImageUpload($_FILES['Images']['size']['images'][$i],$filename)){
+
+                    }else{
+                        //return false;
+                    }
+                }
+            }
+            return $this->actionIndex();
+        }
+
+        //Не Ajax
+        /*if ($this->request->isPost) {
+            $images = UploadedFile::getInstances($model, 'images');
+            foreach ($images as $item){
+                $filename = $model->uniqFilename().'.'.explode('/',$item->type)[1];
+                if ($model->ImageSave($item,$filename)){
+
+                    if ($model->ImageUpload($item,$filename)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }
+        }*/
+    }
 
     public function actionDelete($id)
     {
