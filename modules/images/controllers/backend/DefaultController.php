@@ -42,6 +42,18 @@ class DefaultController extends Controller
                 return ActiveForm::validate($model);
             }
         }
+        return false;
+    }
+
+    public function actionSelect(){
+        if ($this->request->isPost) {
+            $images = Images::find()->select(['id','path'])->andWhere(['id' => Yii::$app->request->post('images')])->asArray()->orderBy(['id' => SORT_DESC])->all();
+
+            return $this->renderAjax('view', [
+                'images' => $images
+            ]);
+        }
+        return false;
     }
 
     public function actionIndex()
@@ -66,20 +78,17 @@ class DefaultController extends Controller
         $model = new Images();
         //Ajax
         if ($this->request->isPost) {
-            //debug($_FILES['Images']);die();
             for ($i=0;$i<count($_FILES['Images']['name']['images']);$i++){
                 $filename = $model->uniqFilename().'.'.explode('/',$_FILES['Images']['type']['images'][$i])[1];
                 if ($model->ImageSave($_FILES['Images']['tmp_name']['images'][$i],$filename)){
-                    if ($model->ImageUpload($_FILES['Images']['size']['images'][$i],$filename)){
-
-                    }else{
-                        //return false;
+                    if (!$model->ImageUpload($_FILES['Images']['size']['images'][$i],$filename)){
+                        unlink($model->path.$filename);
                     }
                 }
             }
             return $this->actionIndex();
         }
-
+        return false;
         //Не Ajax
         /*if ($this->request->isPost) {
             $images = UploadedFile::getInstances($model, 'images');
@@ -97,19 +106,15 @@ class DefaultController extends Controller
         }*/
     }
 
-    public function actionDelete($id)
+    public function actionDelete()
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = Images::findOne($id)) !== null) {
-            return $model;
+        if ($this->request->isPost) {
+            foreach (Yii::$app->request->post('images') as $item){
+                unlink(Images::path.Images::find()->select(['filename'])->andWhere(['id' => (int)$item])->asArray()->one()['filename']);
+                Images::deleteAll(['id' => (int)$item]);
+            }
+            return $this->actionIndex();
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return false;
     }
 }

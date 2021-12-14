@@ -15,9 +15,7 @@ class BlockImages extends Widget
     {
         parent::init();
 
-        $model = $this->model;
-        $attribute = $this->attribute;
-        $model->$attribute;
+
 
     }
 
@@ -25,9 +23,6 @@ class BlockImages extends Widget
     {
         return $this->render('index',[
             'model' => $this->model,
-            'images' => Images::find()->select(['path'])->asArray()->all(),
-            'attribute' => $this->attribute,
-            'options' => $this->options,
         ]);
     }
 

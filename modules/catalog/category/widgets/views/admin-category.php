@@ -4,7 +4,7 @@
         <div class="box box-primary box-solid">
             <div class="box-header with-border">
 
-                <span class="box-title-custom"><i class="far fa-expand-arrows-alt fa-lg"></i><span><?= $category['name'] ?></span></span>
+                <span class="box-title-custom"><i class="far fa-expand-arrows-alt fa-lg"></i><span> <?= $category['name'] ?></span></span>
 
                 <div class="box-tools pull-right lc-crud-icons">
                     <?= \yii\helpers\Html::tag('a', '<i class="fa fa-pencil"></i>', [

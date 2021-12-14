@@ -67,6 +67,7 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
+        //debug($this->request->post(),$_FILES);die();
         $model = new Product();
         $model->images = UploadedFile::getInstances($model, 'images');
         //debug($model->images);die();
@@ -92,6 +93,7 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
+        debug($this->request->post());die();
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {

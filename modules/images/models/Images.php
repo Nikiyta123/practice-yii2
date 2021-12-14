@@ -17,6 +17,8 @@ class Images extends \yii\db\ActiveRecord
 {
 
     const path = 'uploads/';
+    const attribute = 'images';
+
     public $images;
     /**
      * {@inheritdoc}
@@ -51,6 +53,7 @@ class Images extends \yii\db\ActiveRecord
             'images' => 'Картинки'
         ];
     }
+
 
     public function ImageUpload($size,$filename)
     {

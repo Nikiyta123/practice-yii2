@@ -166,4 +166,49 @@ return array (
       '@dosamigos/tinymce' => $vendorDir . '/2amigos/yii2-tinymce-widget/src',
     ),
   ),
+  'yiisoft/yii2-imagine' => 
+  array (
+    'name' => 'yiisoft/yii2-imagine',
+    'version' => '2.3.0.0',
+    'alias' => 
+    array (
+      '@yii/imagine' => $vendorDir . '/yiisoft/yii2-imagine/src',
+    ),
+  ),
+  'noam148/yii2-image-resize' => 
+  array (
+    'name' => 'noam148/yii2-image-resize',
+    'version' => '1.1.0.0',
+    'alias' => 
+    array (
+      '@noam148/imageresize' => $vendorDir . '/noam148/yii2-image-resize',
+    ),
+  ),
+  'kartik-v/yii2-krajee-base' => 
+  array (
+    'name' => 'kartik-v/yii2-krajee-base',
+    'version' => '3.0.1.0',
+    'alias' => 
+    array (
+      '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base/src',
+    ),
+  ),
+  'kartik-v/yii2-widget-fileinput' => 
+  array (
+    'name' => 'kartik-v/yii2-widget-fileinput',
+    'version' => '1.1.0.0',
+    'alias' => 
+    array (
+      '@kartik/file' => $vendorDir . '/kartik-v/yii2-widget-fileinput/src',
+    ),
+  ),
+  'noam148/yii2-image-manager' => 
+  array (
+    'name' => 'noam148/yii2-image-manager',
+    'version' => '1.2.13.0',
+    'alias' => 
+    array (
+      '@noam148/imagemanager' => $vendorDir . '/noam148/yii2-image-manager',
+    ),
+  ),
 );

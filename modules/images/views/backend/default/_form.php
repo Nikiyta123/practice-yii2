@@ -9,8 +9,8 @@ use yii\helpers\Url;
 /* @var $form yii\widgets\ActiveForm */
 $js = <<< JS
     $('#wg-images-form').on('beforeSubmit', function (e) {
-        var wgform = $(this);
-        var formData = new FormData($('#wg-images-form')[0]);
+        let wgform = $(this);
+        let formData = new FormData($('#wg-images-form')[0]);
         $.pjax({
             type       : 'POST',
             url        : wgform.attr('action'),
@@ -42,7 +42,6 @@ $this->registerJs($js);
         //'validateOnBlur' => false,
 
 ]); ?>
-
 
     <?= $form->field($model, 'images[]')->fileInput(['multiple' => true]) ?>
 
