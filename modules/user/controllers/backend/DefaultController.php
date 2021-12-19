@@ -31,6 +31,12 @@ class DefaultController extends Controller
         );
     }
 
+    public function actionTestwork()
+    {
+        $this->layout = false;
+        return $this->render('testwork');
+    }
+
     /**
      * Lists all User models.
      * @return mixed

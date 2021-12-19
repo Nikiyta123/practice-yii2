@@ -79,14 +79,14 @@ class Category extends ActiveRecord
         return $res;
     }
 
-    public function FatTree($tree,$id){//Определенная Ветка Категорий
+    /*public function FatTree($tree,$id){//Определенная Ветка Категорий
         foreach ($tree as $item){
             if ($item['id'] == $id){return $item;}
             elseif(isset($item['childs'])){$recursion = $this->FatTree($item['childs'],$id);}
             if ($recursion){return $recursion;}
         }
         return false;
-    }
+    }*/
 
     function ExeptionBulding($field,$value){
         $category = Category::find()->select(['id'])->asArray()->andWhere([$field => $value])->orderBy(['pos' => SORT_ASC])->all();
