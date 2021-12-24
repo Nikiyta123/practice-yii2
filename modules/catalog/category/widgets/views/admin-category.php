@@ -1,4 +1,4 @@
-<?php  if ($category['parent_id'] == 0): ?>
+<?php if ($category['parent_id'] == 0): ?>
 
     <div class="col-md-12" id="<?= $category['id'] ?>">
         <div class="box box-primary box-solid">
@@ -16,7 +16,7 @@
                         'href' => \yii\helpers\Url::to(['delete', 'id' => $category['id']]),
                         'aria-label' => 'Удалить',
                         'data-pjax' => '0',
-                        'data-confirm' => 'Удалить категорию - "'. $category['name'] .'"? Все ее дочернии категории будут удалены',
+                        'data-confirm' => 'Удалить категорию - "'.$category['name'].'"? Все ее дочернии категории будут удалены.',
                         'data-method' => 'post',
                     ]) ?>
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -54,7 +54,7 @@
                     'href' => \yii\helpers\Url::to(['delete', 'id' => $category['id']]),
                     'aria-label' => 'Удалить',
                     'data-pjax' => '0',
-                    'data-confirm' => 'Удалить категорию - "'. $category['name'] .'"? Все ее дочернии категории будут удалены',
+                    'data-confirm' => ($category['folder'] == 0 ? 'Удалить категорию - "'.$category['name'].'"?' : 'Удалить категорию - "'.$category['name'].'"? Все ее дочернии категории будут удалены.'),
                     'data-method' => 'post',
                 ]) ?>
             </div>

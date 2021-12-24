@@ -4,12 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\widgets\Breadcrumbs;
-/* @var $this yii\web\View */
-/* @var $searchModel app\modules\catalog\product\models\ProductSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+use yii\helpers\ArrayHelper;
+use app\modules\catalog\category\models\Category;
 
 $this->title = 'Товары';
 $this->params['breadcrumbs'][] = $this->title;
+
+$category = new Category;
 ?>
 <div class="content-header">
     <h1>
@@ -37,8 +38,28 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
                             'name',
-                            'price',
-                            'category_id',
+                            [
+                                'attribute' => 'price',
+                                'filter' =>
+                                    Html::tag(
+                                        'div',
+                                        Html::tag('div', Html::activeTextInput($searchModel, 'priceMin', ['class' => 'form-control','placeholder' => 'от'])) .
+                                        Html::tag('div', Html::activeTextInput($searchModel, 'priceMax', ['class' => 'form-control','placeholder' => 'до']))
+                                    ),
+                            ],
+                            [
+                                'attribute' => 'category_id',
+                                'value' => function ($data) {
+                                    return $data->category->name;
+                                },
+                                'filter' => Html::activeDropDownList($searchModel, 'category_id',
+                                    $category->BuildFullTree($category->FullTree()),
+                                    [
+                                        'options' => $category->ExeptionBulding(1),
+                                        'prompt' => 'Все',
+                                        'class' => 'form-control'
+                                    ]),
+                            ],
 
                             ['class' => 'yii\grid\ActionColumn'],
                         ],

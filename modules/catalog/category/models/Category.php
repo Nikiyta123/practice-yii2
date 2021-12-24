@@ -56,14 +56,15 @@ class Category extends ActiveRecord
     }
 
     public function FullTree(){ //Полное Дерево Категорий
+
         $data = Category::find()->select(['id','name','parent_id','folder'])->indexBy(['id'])->asArray()->orderBy(['pos' => SORT_ASC])->all();
         $tree = [];
-        foreach ($data as $id=>&$node){
+        foreach ($data as $id =>& $node){
             if (!$node['parent_id']){
-                $tree[$id] = &$node;
+                $tree[$id] =& $node;
             }
             else{
-                $data[$node['parent_id']]['childs'][$node['id']] = &$node;
+                $data[$node['parent_id']]['childs'][$node['id']] =& $node;
             }
         }
         return $tree;
@@ -79,21 +80,22 @@ class Category extends ActiveRecord
         return $res;
     }
 
-    /*public function FatTree($tree,$id){//Определенная Ветка Категорий
-        foreach ($tree as $item){
-            if ($item['id'] == $id){return $item;}
-            elseif(isset($item['childs'])){$recursion = $this->FatTree($item['childs'],$id);}
-            if ($recursion){return $recursion;}
+    public function FatTree($id){//Определенная Ветка Категорий
+        $data = $this->FullTree();
+        foreach ($data as $item=>$value){
+            debug($item);
         }
-        return false;
-    }*/
+        die();
+        return $tree;
+    }
 
-    function ExeptionBulding($field,$value){
-        $category = Category::find()->select(['id'])->asArray()->andWhere([$field => $value])->orderBy(['pos' => SORT_ASC])->all();
+    function ExeptionBulding($value){// 0 or 1
+        $category = Category::find()->select(['id'])->asArray()->andWhere(['folder' => $value])->orderBy(['pos' => SORT_ASC])->all();
         $exeption = array();
         foreach ($category as $item) {
             $exeption[$item['id']] = array('disabled'=>'disabled');
         }
+
         return $exeption;
     }
 

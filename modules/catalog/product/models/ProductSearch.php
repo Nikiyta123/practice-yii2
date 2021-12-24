@@ -11,14 +11,24 @@ use app\modules\catalog\product\models\Product;
  */
 class ProductSearch extends Product
 {
+    public $priceMin;
+    public $priceMax;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'price', 'category_id'], 'integer'],
+            [['id', 'price', 'category_id','priceMin','priceMax'], 'integer'],
             [['name'], 'safe'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'priceMin' => 'Мин',
+            'priceMax' => 'Макс',
         ];
     }
 
@@ -59,11 +69,12 @@ class ProductSearch extends Product
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'price' => $this->price,
             'category_id' => $this->category_id,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query
+            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['>=', 'price', $this->priceMin])
+            ->andFilterWhere(['<=', 'price', $this->priceMax]);
 
         return $dataProvider;
     }

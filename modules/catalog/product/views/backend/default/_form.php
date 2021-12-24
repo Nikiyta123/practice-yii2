@@ -22,7 +22,7 @@ $category = new Category;
 
     <?= $form->field($model, 'price',['options' => ['class' => 'form-group col-md-12']])->textInput() ?>
 
-    <?= $form->field($model, 'category_id',['options' => ['class' => 'form-group col-md-12']])->dropDownList($category->BuildFullTree($category->FullTree()), ['options' => $category->ExeptionBulding('folder',1)]) ?>
+    <?= $form->field($model, 'category_id',['options' => ['class' => 'form-group col-md-12']])->dropDownList($category->BuildFullTree($category->FullTree()), ['options' => $category->ExeptionBulding(1)]) ?>
 
     <?=
      $form->field($model, 'images')->widget(\app\modules\images\widgets\BlockImages::className(), [

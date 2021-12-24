@@ -16,7 +16,7 @@ use dosamigos\tinymce\TinyMce;
 
 <?= $form->field($model, 'parent_id',['options' => ['class' => 'form-group col-md-12']])->dropDownList(
     (array)[0=>'Основная категория']+$model->BuildFullTree($model->FullTree()),
-    ['options' => $model->ExeptionBulding('folder',0)]
+    ['options' => $model->ExeptionBulding(0)]
 ) ?>
 
 <?= $form->field($model, 'name',['options' => ['class' => 'form-group col-md-9']])->textInput(['maxlength' => true]) ?>

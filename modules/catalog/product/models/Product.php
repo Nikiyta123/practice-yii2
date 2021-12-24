@@ -52,7 +52,9 @@ class Product extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getProduct(){
+    public function getCategory(){
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
+
+
 }

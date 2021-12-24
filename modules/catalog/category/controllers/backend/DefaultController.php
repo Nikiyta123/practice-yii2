@@ -129,9 +129,25 @@ class DefaultController extends Controller
     public function actionDelete($id)
     {
         $model = new Category();
-        $array = $model->FatTree($model->FullTree(),$id);
-        $iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($array));
-        $arrOut = iterator_to_array($iterator, false);
+        debug($model->FullTree());die();
+        $array = [
+            'id' => 1,
+            'name' => 'one',
+            'childs' => [
+                'id'=>2,
+                'name' => 'two',
+                'childs' => []
+            ]
+        ];
+        debug($array);
+
+        $one = new \RecursiveArrayIterator($array);
+        debug($one);
+
+        $two = new \RecursiveIteratorIterator($one);
+        debug($two);
+
+        $arrOut = iterator_to_array($two, false);
         debug($arrOut);die();
 
         //$this->findModel($id)->delete();
